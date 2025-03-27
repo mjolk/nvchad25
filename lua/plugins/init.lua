@@ -12,25 +12,18 @@ return {
       require "configs.lspconfig"
     end,
   },
-
   {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
         "gopls",
-        "golines",
-        "goimports-reviser",
-        "gofumpt",
-        "prettier",
         "lua-language-server",
         "html-lsp",
         "stylua",
         "clangd",
-        "clang-format",
         "delve",
         "cpptools",
         -- "csharp-language-server",
-        -- "csharpier",
         "docker-compose-language-server",
         "dockerfile-language-server",
       },
@@ -53,6 +46,7 @@ return {
         "dockerfile",
         "yaml",
         "c_sharp",
+        "python",
       },
     },
   },
