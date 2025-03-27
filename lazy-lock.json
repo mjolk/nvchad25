@@ -8,7 +8,6 @@
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90" },
   "conform.nvim": { "branch": "master", "commit": "f9ef25a7ef00267b7d13bfc00b0dea22d78702d5" },
-  "csharpls-extended-lsp.nvim": { "branch": "master", "commit": "991d2c43afd7c7be77edd27a2ae686f9779382da" },
   "friendly-snippets": { "branch": "main", "commit": "efff286dd74c22f731cdec26a70b46e5b203c619" },
   "gitsigns.nvim": { "branch": "main", "commit": "7010000889bfb6c26065e0b0f7f1e6aa9163edd9" },
   "gopher.nvim": { "branch": "main", "commit": "847c79ab76184a18757c601d939f7417b99081f7" },

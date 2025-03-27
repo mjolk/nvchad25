@@ -61,7 +61,7 @@ M.base_16 = {
 
 M.polish_hl = {
 
-  defaults = {
+  syntax = {
     Keyword = {
       fg = M.base_30.label_blue,
     },
@@ -198,6 +198,10 @@ M.polish_hl = {
       fg = M.base_30.ident_blue,
     },
 
+    ["@type"] = {
+      fg = M.base_30.ident_blue,
+    },
+
     ["@field"] = {
       fg = M.base_16.base05,
     },
@@ -222,6 +226,10 @@ M.polish_hl = {
     ["@variable.parameter"] = { fg = M.base_16.base05 },
 
     ["@storageclass"] = { fg = M.base_30.ident_blue },
+
+    ["@number"] = { fg = M.base_30.red },
+
+    ["@number.float"] = { fg = M.base_30.red },
   },
 }
 
