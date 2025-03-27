@@ -1,0 +1,90 @@
+require "nvchad.mappings"
+
+-- add yours here
+
+local map = vim.keymap.set
+
+-- DAP
+map("n", "<leader>dB", function()
+  require("dap").set_breakpoint(vim.fn.input "Breakpoint condition: ")
+end, { desc = "Dap Breakpoint Condition" })
+map("n", "<leader>db", function()
+  require("dap").toggle_breakpoint()
+end, { desc = "Dap Toggle Breakpoint" })
+map("n", "<leader>dc", function()
+  require("dap").continue()
+end, { desc = "Dap Continue" })
+map("n", "<leader>dC", function()
+  require("dap").run_to_cursor()
+end, { desc = "Dap Run to Cursor" })
+map("n", "<leader>dg", function()
+  require("dap").goto_()
+end, { desc = "Dap Go to line (no execute)" })
+map("n", "<leader>di", function()
+  require("dap").step_into()
+end, { desc = "Dap Step Into" })
+map("n", "<leader>dj", function()
+  require("dap").down()
+end, { desc = "Dap Down" })
+map("n", "<leader>dk", function()
+  require("dap").up()
+end, { desc = "Dap Up" })
+map("n", "<leader>dl", function()
+  require("dap").run_last()
+end, { desc = "Dap Run last" })
+map("n", "<leader>do", function()
+  require("dap").step_out()
+end, { desc = "Dap Step Out" })
+map("n", "<leader>dO", function()
+  require("dap").step_over()
+end, { desc = "Dap Step Over" })
+map("n", "<leader>dp", function()
+  require("dap").pause()
+end, { desc = "Dap Pause" })
+map("n", "<leader>dr", function()
+  require("dap").repl.toggle()
+end, { desc = "Dap Toggle REPL" })
+map("n", "<leader>ds", function()
+  require("dap").session()
+end, { desc = "Dap Session" })
+map("n", "<leader>dt", function()
+  require("dap").terminate()
+end, { desc = "Dap Terminate." })
+map("n", "<leader>dw", function()
+  require("dap.ui.widgets").hover()
+end, { desc = "Dap Widgets" })
+map("n", "<leader>dxx", function()
+  require("dap").clear_breakpoints()
+end, { desc = "Dap Clear all breakpoints" })
+
+-- DAPUI
+map("n", "<leader>du", function()
+  require("dapui").toggle {}
+end, { desc = "Dapui toggle" })
+map("n", "<leader>de", function()
+  require("dapui").eval()
+end, { desc = "Dapui evaluate" })
+map("n", "<leader>dx", function()
+  require("dapui").close()
+end, { desc = "Dapui close" })
+map("v", "<leader>de", function()
+  require("dapui").eval()
+end, { desc = "Dapui eval selection" })
+
+-- DAPGO
+map("n", "<leader>dgt", function()
+  require("dap-go").debug_test()
+end, { desc = "Dapgo debug test" })
+map("n", "<leader>dgl", function()
+  require("dap-go").debug_last()
+end, { desc = "Dapgo debug last test" })
+
+-- Gopher
+map("n", "<leader>gsj", "<cmd> GoTagAdd json <CR>", { desc = "Gopher json struct tags" })
+map("n", "<leader>gsy", "<cmd> GoTagAdd yaml <CR>", { desc = "Gopher yaml struct tags" })
+
+-- Telescope
+map("n", "<C-p>", "<cmd> Telescope find_files <CR>", { desc = "Telescope ctrlP" })
+map("n", "<leader>fer", function()
+  require("telescope.builtin").diagnostics { bufnr = 0 }
+end, { desc = "Telescope Show lsp diagnostics current buffer" })
