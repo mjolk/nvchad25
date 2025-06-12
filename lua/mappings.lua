@@ -84,7 +84,15 @@ map("n", "<leader>gsj", "<cmd> GoTagAdd json <CR>", { desc = "Gopher json struct
 map("n", "<leader>gsy", "<cmd> GoTagAdd yaml <CR>", { desc = "Gopher yaml struct tags" })
 
 -- Telescope
-map("n", "<C-p>", "<cmd> Telescope find_files <CR>", { desc = "Telescope ctrlP" })
-map("n", "<leader>fer", function()
-  require("telescope.builtin").diagnostics { bufnr = 0 }
-end, { desc = "Telescope Show lsp diagnostics current buffer" })
+-- map("n", "<C-p>", "<cmd> Telescope find_files <CR>", { desc = "Telescope ctrlP" })
+-- map("n", "<leader>fer", function()
+--   require("telescope.builtin").diagnostics { bufnr = 0 }
+-- end, { desc = "Telescope Show lsp diagnostics current buffer" })
+map("n", "<leader>fw", "<cmd>FzfLua live_grep<CR>", { desc = "FzfLua live grep" })
+map("n", "<leader>fb", "<cmd>FzfLua buffers<CR>", { desc = "FzfLua find buffers" })
+map("n", "<leader>fq", "<cmd>FzfLua quickfix<CR>", { desc = "FzfLua quickfix" })
+map("n", "<leader>fo", "<cmd>FzfLua oldfiles<CR>", { desc = "FzfLua find oldfiles" })
+map("n", "<leader>fg", "<cmd>FzfLua git_commits<CR>", { desc = "FzfLua git commits" })
+map("n", "<leader>fs", "<cmd>FzfLua git_status<CR>", { desc = "FzfLua git status" })
+map("n", "<leader>fd", "<cmd>FzfLua diagnostics_document<CR>", { desc = "FzfLua diagnostics" })
+map("n", "<leader>ff", "<cmd>FzfLua files<cr>", { desc = "FzfLua find files" })
