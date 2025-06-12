@@ -95,8 +95,8 @@ return {
     opts = {
       "borderless_full",
       winopts = {
-        fullscreen = true,
-        --split = "belowright new", -- open in a split instead?
+        -- fullscreen = true,
+        split = "belowright new", -- open in a split instead?
         -- "belowright new"  : split below
         -- "aboveleft new"   : split above
         -- "belowright vnew" : split right

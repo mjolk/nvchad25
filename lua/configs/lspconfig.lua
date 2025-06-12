@@ -1,16 +1,24 @@
 require("nvchad.configs.lspconfig").defaults()
-
 local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
 
 local servers = { "html", "cssls", "clangd" }
 local nvlsp = require "nvchad.configs.lspconfig"
-nvlsp.capabilities.offsetEncoding = "utf-8"
+
+local invlsp = function(client, bufnr)
+  local function opts(desc)
+    return { buffer = bufnr, desc = "LSP " .. desc }
+  end
+  nvlsp.on_attach(client, bufnr)
+  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts "Lsp code actions")
+  vim.keymap.set("n", "<leader>im", vim.lsp.buf.implementation, opts "Lsp list implementations")
+  vim.keymap.set("n", "<leader>re", vim.lsp.buf.references, opts "Lsp list references")
+end
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
-    on_attach = nvlsp.on_attach,
+    on_attach = invlsp,
     on_init = nvlsp.on_init,
     capabilities = nvlsp.capabilities,
   }
@@ -18,7 +26,7 @@ end
 
 lspconfig.gopls.setup {
   on_init = nvlsp.on_init,
-  on_attach = nvlsp.on_attach,
+  on_attach = invlsp,
   capabilities = nvlsp.capabilities,
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -36,7 +44,7 @@ lspconfig.gopls.setup {
 
 -- lspconfig.csharp_ls.setup {
 --   on_init = nvlsp.on_init,
---   on_attach = nvlsp.on_attach,
+--   on_attach = invlsp,
 --   capabilities = nvlsp.capabilities,
 --   handlers = {
 --     ["textDocument/definition"] = require("csharpls_extended").handler,
@@ -46,7 +54,7 @@ lspconfig.gopls.setup {
 
 require("typescript-tools").setup {
   on_init = nvlsp.on_init,
-  on_attach = nvlsp.on_attach,
+  on_attach = invlsp,
   capabilities = nvlsp.capabilities,
   settings = {
     -- spawn additional tsserver instance to calculate diagnostics on it
