@@ -2,7 +2,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
 
-local servers = { "html", "cssls", "clangd" }
+local servers = { "html", "cssls", "clangd", "neocmake" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 local invlsp = function(client, bufnr)
