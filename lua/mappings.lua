@@ -4,6 +4,17 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
+vim.keymap.set("n", "<leader>k", function()
+  vim.diagnostic.config { virtual_lines = { current_line = true }, virtual_text = false }
+
+  vim.api.nvim_create_autocmd("CursorMoved", {
+    group = vim.api.nvim_create_augroup("line-diagnostics", { clear = true }),
+    callback = function()
+      vim.diagnostic.config { virtual_lines = false, virtual_text = true }
+      return true
+    end,
+  })
+end)
 -- DAP
 map("n", "<leader>dB", function()
   require("dap").set_breakpoint(vim.fn.input "Breakpoint condition: ")
@@ -88,11 +99,11 @@ map("n", "<leader>gsy", "<cmd> GoTagAdd yaml <CR>", { desc = "Gopher yaml struct
 -- map("n", "<leader>fer", function()
 --   require("telescope.builtin").diagnostics { bufnr = 0 }
 -- end, { desc = "Telescope Show lsp diagnostics current buffer" })
-map("n", "<leader>fw", "<cmd>FzfLua live_grep<CR>", { desc = "FzfLua live grep" })
+map("n", "<leader>fg", "<cmd>FzfLua live_grep<CR>", { desc = "FzfLua live grep" })
 map("n", "<leader>fb", "<cmd>FzfLua buffers<CR>", { desc = "FzfLua find buffers" })
 map("n", "<leader>fq", "<cmd>FzfLua quickfix<CR>", { desc = "FzfLua quickfix" })
 map("n", "<leader>fo", "<cmd>FzfLua oldfiles<CR>", { desc = "FzfLua find oldfiles" })
-map("n", "<leader>fg", "<cmd>FzfLua git_commits<CR>", { desc = "FzfLua git commits" })
+map("n", "<leader>fc", "<cmd>FzfLua git_commits<CR>", { desc = "FzfLua git commits" })
 map("n", "<leader>fs", "<cmd>FzfLua git_status<CR>", { desc = "FzfLua git status" })
 map("n", "<leader>fd", "<cmd>FzfLua diagnostics_document<CR>", { desc = "FzfLua diagnostics" })
 map("n", "<leader>ff", "<cmd>FzfLua files<cr>", { desc = "FzfLua find files" })

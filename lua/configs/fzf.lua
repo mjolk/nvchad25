@@ -1,6 +1,6 @@
 local fzfactions = require("fzf-lua").actions
 require("fzf-lua").setup {
-  --"borderless_full",
+  "borderless_full",
   winopts = {
     fullscreen = true,
     -- split = "belowright new", -- open in a split instead?

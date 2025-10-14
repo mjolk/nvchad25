@@ -1,6 +1,4 @@
 require("nvchad.configs.lspconfig").defaults()
-local lspconfig = require "lspconfig"
-local util = require "lspconfig/util"
 
 local servers = { "html", "cssls", "clangd", "neocmake" }
 local nvlsp = require "nvchad.configs.lspconfig"
@@ -17,20 +15,20 @@ end
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+  vim.lsp.config(lsp, {
     on_attach = invlsp,
     on_init = nvlsp.on_init,
     capabilities = nvlsp.capabilities,
-  }
+  })
+  vim.lsp.enable(lsp)
 end
 
-lspconfig.gopls.setup {
+vim.lsp.config("gopls", {
   on_init = nvlsp.on_init,
   on_attach = invlsp,
   capabilities = nvlsp.capabilities,
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
-  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = {
       completeUnimported = true,
@@ -40,7 +38,8 @@ lspconfig.gopls.setup {
       },
     },
   },
-}
+})
+vim.lsp.enable "gopls"
 
 -- lspconfig.csharp_ls.setup {
 --   on_init = nvlsp.on_init,
