@@ -16,10 +16,13 @@ return {
     opts = {
       ensure_installed = {
         "gopls",
+        "goimports-reviser",
+        "golines",
         "lua-language-server",
         "html-lsp",
         "stylua",
         "clangd",
+        "clang-format",
         "delve",
         "cpptools",
         -- "csharp-language-server",

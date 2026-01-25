@@ -6,7 +6,7 @@ local options = {
     javascript = { "prettier" },
     typescript = { "prettier" },
     scss = { "prettier" },
-    go = { "gofumpt", "golines" },
+    go = { "golines", "goimports-reviser" },
     c = { "clang-format" },
     cpp = { "clang-format" },
   },
