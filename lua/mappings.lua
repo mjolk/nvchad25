@@ -15,6 +15,8 @@ vim.keymap.set("n", "<leader>k", function()
     end,
   })
 end)
+vim.keymap.del("t", "<C-x>")
+--map("t", "<C-x>", "<C-w>s", { desc = "remap ctrl-x to open in horizontal split" })
 -- DAP
 map("n", "<leader>dB", function()
   require("dap").set_breakpoint(vim.fn.input "Breakpoint condition: ")
