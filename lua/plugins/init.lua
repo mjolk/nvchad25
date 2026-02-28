@@ -12,25 +12,32 @@ return {
     end,
   },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason-lspconfig.nvim",
     opts = {
+      automatic_enable = false,
       ensure_installed = {
         "gopls",
-        "goimports-reviser",
-        "golines",
         "lua-language-server",
         "html-lsp",
-        "stylua",
         "clangd",
-        "clang-format",
-        "delve",
-        "cpptools",
-        -- "csharp-language-server",
         "docker-compose-language-server",
         "dockerfile-language-server",
         "neocmakelsp",
         "black",
       },
+    },
+    dependencies = {
+      {
+        "mason-org/mason.nvim",
+        opts = {
+          ensure_installed = {
+            "clang-format",
+            "delve",
+            "cpptools",
+          },
+        },
+      },
+      "neovim/nvim-lspconfig",
     },
   },
   {
@@ -49,7 +56,7 @@ return {
         "go",
         "dockerfile",
         "yaml",
-       -- "c_sharp",
+        -- "c_sharp",
         "python",
         "cmake",
       },
@@ -60,6 +67,7 @@ return {
     config = function()
       require "configs.dapui"
     end,
+    lazy = true,
     dependencies = {
       {
         "mfussenegger/nvim-dap",
@@ -86,6 +94,7 @@ return {
     "olexsmir/gopher.nvim",
     ft = "go",
     config = true,
+    lazy = true,
     build = function()
       vim.cmd [[silent! GoInstallDeps]]
     end,
@@ -118,7 +127,7 @@ return {
   { "nvim-neotest/nvim-nio" },
   {
     "folke/todo-comments.nvim",
-    lazy = false,
+    lazy = true,
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       -- your configuration comes here
@@ -144,5 +153,24 @@ return {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
+    lazy = true,
+  },
+  {
+    "NeogitOrg/neogit",
+    lazy = true,
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+
+      -- Only one of these is needed.
+      "sindrets/diffview.nvim", -- optional
+
+      -- Only one of these is needed.
+      --"nvim-telescope/telescope.nvim", -- optional
+      "ibhagwan/fzf-lua", -- optional
+    },
+    cmd = "Neogit",
+    keys = {
+      { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
+    },
   },
 }
