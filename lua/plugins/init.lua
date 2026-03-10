@@ -155,22 +155,38 @@ return {
     opts = {},
     lazy = true,
   },
+  -- {
+  --   "NeogitOrg/neogit",
+  --   lazy = true,
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim", -- required
+  --
+  --     -- Only one of these is needed.
+  --     "sindrets/diffview.nvim", -- optional
+  --
+  --     -- Only one of these is needed.
+  --     --"nvim-telescope/telescope.nvim", -- optional
+  --     "ibhagwan/fzf-lua", -- optional
+  --   },
+  --   cmd = "Neogit",
+  --   keys = {
+  --     { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
+  --   },
+  -- },
   {
-    "NeogitOrg/neogit",
+    "mikesmithgh/kitty-scrollback.nvim",
+    enabled = true,
     lazy = true,
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- required
-
-      -- Only one of these is needed.
-      "sindrets/diffview.nvim", -- optional
-
-      -- Only one of these is needed.
-      --"nvim-telescope/telescope.nvim", -- optional
-      "ibhagwan/fzf-lua", -- optional
+    cmd = {
+      "KittyScrollbackGenerateKittens",
+      "KittyScrollbackCheckHealth",
+      "KittyScrollbackGenerateCommandLineEditing",
     },
-    cmd = "Neogit",
-    keys = {
-      { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
-    },
+    event = { "User KittyScrollbackLaunch" },
+    -- version = '*', -- latest stable version, may have breaking changes if major version changed
+    -- version = '^6.0.0', -- pin major version, include fixes and features that do not have breaking changes
+    config = function()
+      require("kitty-scrollback").setup()
+    end,
   },
 }
