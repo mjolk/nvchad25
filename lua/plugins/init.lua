@@ -189,4 +189,11 @@ return {
       require("kitty-scrollback").setup()
     end,
   },
+  {
+    "mfussenegger/nvim-lint",
+    event = "VeryLazy",
+    config = function()
+      require "configs.lint"
+    end,
+  },
 }
