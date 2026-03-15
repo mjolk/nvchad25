@@ -127,7 +127,7 @@ return {
   { "nvim-neotest/nvim-nio" },
   {
     "folke/todo-comments.nvim",
-    lazy = true,
+    lazy = false,
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       -- your configuration comes here
@@ -155,24 +155,24 @@ return {
     opts = {},
     lazy = true,
   },
-  -- {
-  --   "NeogitOrg/neogit",
-  --   lazy = true,
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim", -- required
-  --
-  --     -- Only one of these is needed.
-  --     "sindrets/diffview.nvim", -- optional
-  --
-  --     -- Only one of these is needed.
-  --     --"nvim-telescope/telescope.nvim", -- optional
-  --     "ibhagwan/fzf-lua", -- optional
-  --   },
-  --   cmd = "Neogit",
-  --   keys = {
-  --     { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
-  --   },
-  -- },
+  {
+    "NeogitOrg/neogit",
+    lazy = true,
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+
+      -- Only one of these is needed.
+      "sindrets/diffview.nvim", -- optional
+
+      -- Only one of these is needed.
+      --"nvim-telescope/telescope.nvim", -- optional
+      "ibhagwan/fzf-lua", -- optional
+    },
+    cmd = "Neogit",
+    -- keys = {
+    --   { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
+    -- },
+  },
   {
     "mikesmithgh/kitty-scrollback.nvim",
     enabled = true,

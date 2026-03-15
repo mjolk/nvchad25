@@ -111,3 +111,7 @@ map("n", "<leader>fc", "<cmd>FzfLua git_commits<CR>", { desc = "FzfLua git commi
 map("n", "<leader>fs", "<cmd>FzfLua git_status<CR>", { desc = "FzfLua git status" })
 map("n", "<leader>fd", "<cmd>FzfLua diagnostics_document<CR>", { desc = "FzfLua diagnostics" })
 map("n", "<leader>ff", "<cmd>FzfLua files<cr>", { desc = "FzfLua find files" })
+
+map("n", "<leader>gg", function()
+  require("neogit").open { kind = "replace" }
+end, { desc = "neogit" })
