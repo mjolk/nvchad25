@@ -10,6 +10,7 @@ local options = {
     -- go = { "gofumpt" },
     c = { "clang-format" },
     cpp = { "clang-format" },
+    markdown = { "prettier" },
   },
   formatters = {
     golines = {

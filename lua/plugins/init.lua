@@ -59,6 +59,7 @@ return {
         -- "c_sharp",
         "python",
         "cmake",
+        "markdown",
       },
     },
   },
@@ -136,6 +137,24 @@ return {
     },
   },
   {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+    init = function()
+      -- Disable entire built-in ftplugin mappings to avoid conflicts.
+      -- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+      vim.g.no_plugin_maps = true
+
+      -- Or, disable per filetype (add as you like)
+      -- vim.g.no_python_maps = true
+      -- vim.g.no_ruby_maps = true
+      -- vim.g.no_rust_maps = true
+      -- vim.g.no_go_maps = true
+    end,
+    config = function()
+      -- put your config here
+    end,
+  },
+  {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
@@ -149,12 +168,13 @@ return {
   --   "Decodetalkers/csharpls-extended-lsp.nvim",
   --   ft = "c_sharp",
   -- },
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
-    lazy = true,
-  },
+  -- this typescript plugin and it's config breaks stuff!!!!!
+  -- {
+  --   "pmizio/typescript-tools.nvim",
+  --   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  --   opts = {},
+  --   event = "VeryLazy",
+  -- },
   {
     "NeogitOrg/neogit",
     lazy = true,
