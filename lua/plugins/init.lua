@@ -112,19 +112,19 @@ return {
       require "configs.fzf"
     end,
   },
-  {
-    "nvim-telescope/telescope.nvim",
-    enabled = false,
-    opts = function(_, conf)
-      conf.defaults.mappings.i = {
-        ["<C-j>"] = require("telescope.actions").move_selection_next,
-        ["<A-t>"] = require("telescope.actions.layout").toggle_preview,
-        ["<Esc>"] = require("telescope.actions").close,
-      }
-
-      return conf
-    end,
-  },
+  -- {
+  --   "nvim-telescope/telescope.nvim",
+  --   enabled = false,
+  --   opts = function(_, conf)
+  --     conf.defaults.mappings.i = {
+  --       ["<C-j>"] = require("telescope.actions").move_selection_next,
+  --       ["<A-t>"] = require("telescope.actions.layout").toggle_preview,
+  --       ["<Esc>"] = require("telescope.actions").close,
+  --     }
+  --
+  --     return conf
+  --   end,
+  -- },
   { "nvim-neotest/nvim-nio" },
   {
     "folke/todo-comments.nvim",
@@ -155,6 +155,10 @@ return {
     end,
   },
   {
+    "L3MON4D3/LuaSnip",
+    build = "make install_jsregexp",
+  },
+  {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
@@ -176,23 +180,28 @@ return {
   --   event = "VeryLazy",
   -- },
   {
-    "NeogitOrg/neogit",
-    lazy = true,
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- required
-
-      -- Only one of these is needed.
-      "sindrets/diffview.nvim", -- optional
-
-      -- Only one of these is needed.
-      --"nvim-telescope/telescope.nvim", -- optional
-      "ibhagwan/fzf-lua", -- optional
-    },
-    cmd = "Neogit",
-    -- keys = {
-    --   { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
-    -- },
+    "sindrets/diffview.nvim", -- optional
+    enabled = true,
+    event = "VeryLazy",
   },
+  -- {
+  --   "NeogitOrg/neogit",
+  --   lazy = true,
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim", -- required
+  --
+  --     -- Only one of these is needed.
+  --     "sindrets/diffview.nvim", -- optional
+  --
+  --     -- Only one of these is needed.
+  --     --"nvim-telescope/telescope.nvim", -- optional
+  --     "ibhagwan/fzf-lua", -- optional
+  --   },
+  --   cmd = "Neogit",
+  --   -- keys = {
+  --   --   { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
+  --   -- },
+  -- },
   {
     "mikesmithgh/kitty-scrollback.nvim",
     enabled = true,
@@ -235,5 +244,14 @@ return {
       },
     },
     cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
   },
 }
