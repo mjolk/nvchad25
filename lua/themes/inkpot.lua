@@ -159,6 +159,11 @@ M.polish_hl = {
       bold = true,
     },
 
+    ["@function.method"] = {
+      fg = M.base_30.orange,
+      bold = true,
+    },
+
     ["@function.call"] = {
       fg = M.base_30.orange,
       bold = true,
